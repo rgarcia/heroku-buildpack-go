@@ -84,13 +84,8 @@ GOPATH=$build/.heroku/g export GOPATH
 PATH=$GOROOT/bin:$PATH
 
 
-if ! (test -d $build/Godeps || (which hg >/dev/null && which bzr >/dev/null))
+if ! (which hg >/dev/null && which bzr >/dev/null)
 then
-    echo
-    echo "       Tired of waiting for bzr and hg?"
-    echo "       Try github.com/kr/godep for faster deploys."
-    echo
-
     echo -n "       Installing Virtualenv..."
     virtualenv --python $python --distribute --never-download --prompt='(venv) ' $venv > /dev/null 2>&1
     . $venv/bin/activate > /dev/null 2>&1
